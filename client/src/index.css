@@ -1,0 +1,18 @@
+:root {
+  --primary: #21dac1;
+  --secondary:#9ccbc5c4;
+  --dark : #025349;
+  --sidebar:#022925;
+  --activeMenu : white;
+  --inactiveMenu:rgba(255, 255, 255, 0.731);
+  --bgColor:#ebf6f5c4;
+  
+  
+  
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}

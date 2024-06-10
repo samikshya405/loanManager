@@ -2,18 +2,15 @@ import React from 'react'
 import MainLayout from '../../component/MainLayout'
 import { Box } from '@mui/material'
 
-const Dashboard = () => {
+const Paid = () => {
   return (
-    <MainLayout title="Dashboard">
-      <Box>
-        
-        
-      </Box>
+    <MainLayout title={"Paid"}>
+        <Box>
 
-      
-        
+        </Box>
+
     </MainLayout>
   )
 }
 
-export default Dashboard
+export default Paid

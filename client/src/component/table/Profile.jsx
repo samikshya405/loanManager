@@ -1,6 +1,6 @@
 import React from "react";
 import MainLayout from "../layout/MainLayout";
-import BreadCrumbs from "../breadcrumbs/BreadCrumbs";
+
 import {
   Box,
   Button,

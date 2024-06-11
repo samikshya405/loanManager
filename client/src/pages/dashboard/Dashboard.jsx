@@ -5,6 +5,7 @@ import { FaHandHoldingDollar } from "react-icons/fa6";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { FaCoins } from "react-icons/fa";
+import LineChart from "../../component/chart/LineChart";
 
 const Dashboard = () => {
   return (
@@ -100,6 +101,7 @@ const Dashboard = () => {
           </Box>
           <hr />
         </Box>
+      <LineChart/>
       </Box>
     </MainLayout>
   );

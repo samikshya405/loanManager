@@ -5,6 +5,7 @@ import { FaHandHoldingDollar } from "react-icons/fa6";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { FaCoins } from "react-icons/fa";
+import LineChart from "../../component/chart/LineChart";
 // import LineChart from "../../component/chart/LineChart";
 
 const Dashboard = () => {
@@ -94,14 +95,16 @@ const Dashboard = () => {
             </Box>
           </Grid>
         </Grid>
-        <Box sx={{ p: 1 }}>
+        <Box sx={{ p: 1, py:3 }}>
           <hr />
           <Box sx={{ textAlign: "center", p: 1 }}>
-            <Typography>Balance: Rs 8900</Typography>
+            <Typography>Available Balance: Rs 8900</Typography>
           </Box>
           <hr />
         </Box>
-      {/* <LineChart/> */}
+      <Box sx={{p:2}}>
+      <LineChart/>
+      </Box>
       </Box>
     </MainLayout>
   );

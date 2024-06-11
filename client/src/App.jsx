@@ -6,6 +6,8 @@ import Dashboard from './pages/dashboard/Dashboard'
 import Recieved from './pages/recieved/Recieved'
 import Given from './pages/given/Given'
 import Paid from './pages/paid/Paid'
+import People from './pages/people/People'
+import Profile from './component/table/Profile'
 
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
         <Route path='/recieved' element={<Recieved/>}/>
         <Route path='/given' element={<Given/>}/>
         <Route path='/paid' element={<Paid/>}/>
+        <Route path='/people' element={<People/>}/>
+        <Route path='/profile' element={<Profile/>}/>
       </Routes>
     </div>
   )

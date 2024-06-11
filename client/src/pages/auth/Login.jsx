@@ -93,7 +93,7 @@ const Login = () => {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              style={{ background: "var(--primary)" }}
+              style={{ background: "var(--blue)" }}
             >
               Log In
             </Button>

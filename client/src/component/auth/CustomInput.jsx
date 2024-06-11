@@ -2,6 +2,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import {
   Box,
   FormControl,
+  InputAdornment,
   InputLabel,
   MenuItem,
   Select,
@@ -24,7 +25,7 @@ const theme = createTheme({
   },
 });
 
-export const CustomInput = ({ ...input }) => {
+export const CustomInput = ({prefix, ...input }) => {
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -36,6 +37,9 @@ export const CustomInput = ({ ...input }) => {
           {...input}
           autoComplete="current-password"
           variant="outlined"
+          InputProps={{
+            startAdornment: <InputAdornment position="start">{prefix}</InputAdornment>,
+          }}
         />
       </ThemeProvider>
     </>

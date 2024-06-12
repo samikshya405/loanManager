@@ -22,3 +22,17 @@
   margin: 0;
   box-sizing: border-box;
 }
+.bottomMenu{
+  display: none !important;
+}
+@media screen and (max-width: 768px) {
+  .sidemenu{
+    display: none !important;
+  }
+  .main{
+    width: 100% !important;
+  }
+  .bottomMenu{
+    display: flex !important;
+  }
+}

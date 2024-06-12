@@ -13,7 +13,7 @@ const Dashboard = () => {
     <MainLayout title="Dashboard">
       <Box width={"100%"} pt={4} px={2}>
         <Grid container spacing={1}>
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid item xs={12} sm={6} md={6} lg={3}>
             <Box
               sx={{
                 display: "flex",
@@ -34,7 +34,7 @@ const Dashboard = () => {
             </Box>
           </Grid>
 
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid item xs={12} sm={6} md={6} lg={3}>
             <Box
               sx={{
                 display: "flex",
@@ -54,7 +54,7 @@ const Dashboard = () => {
               </Box>
             </Box>
           </Grid>
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid item xs={12} sm={6} md={6} lg={3}>
             <Box
               sx={{
                 display: "flex",
@@ -74,7 +74,7 @@ const Dashboard = () => {
               </Box>
             </Box>
           </Grid>
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid item xs={12} sm={6} md={6} lg={3}>
             <Box
               sx={{
                 display: "flex",

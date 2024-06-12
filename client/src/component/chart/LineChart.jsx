@@ -9,7 +9,7 @@ const LineChart = () => {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [
       {
-        label: 'Monthly Sales',
+        label: 'Monthly Profit',
         data: [20000,40000, 44000, 30000, 20000, 30000,30000, 40000],
         borderColor: 'rgba(75, 192, 192, 1)',
         backgroundColor: 'rgba(75, 192, 192, 0.2)',

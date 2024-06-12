@@ -1,29 +1,36 @@
 import { Box } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { FaHandHoldingDollar } from "react-icons/fa6";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import { FaCoins } from "react-icons/fa";
+import HomeIcon from "@mui/icons-material/Home";
+import PeopleIcon from "@mui/icons-material/People";
 const navigation = [
   {
     name: "Dashboard",
-
+    icon: HomeIcon,
     link: "/",
   },
   {
     name: "Recieved",
-
+    icon: FaHandHoldingDollar,
     link: "/recieved",
   },
   {
     name: "Given",
-
+    icon: TrendingUpIcon,
     link: "/given",
   },
   {
     name: "Paid",
-
+    icon: AttachMoneyIcon,
     link: "/paid",
   },
   {
     name: "People",
+    icon: PeopleIcon,
     link: "/people",
   },
 ];
@@ -36,9 +43,17 @@ const Sidebar = ({ title }) => {
 
   return (
     <Box
-      width={"250px"}
+      width={"20%"}
+      className="sidemenu"
       bgcolor={"var(--blue)"}
-      sx={{ display: "flex", alignItems: "center", position:"sticky", top:0, left:0, height:"100vh" }}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        position: "sticky",
+        top: 0,
+        left: 0,
+        height: "100vh",
+      }}
     >
       <Box
         sx={{
@@ -61,11 +76,15 @@ const Sidebar = ({ title }) => {
                 cursor: "pointer",
                 width: "80%",
                 py: 1,
-                textAlign: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+               
+                gap: "10px",
               }}
               onClick={() => hanldeClick(item.link)}
             >
-              {item.name}
+              <item.icon style={{fontSize:"25px"}} /> <span className="menu">{item.name}</span>
             </Box>
           );
         })}

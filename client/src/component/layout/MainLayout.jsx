@@ -21,7 +21,7 @@ const MainLayout = ({ title, children }) => {
         </Box>
       </Box>
       <Box height={"5vh"} width={"100%"} position={"absolute"} bottom={0} sx={{position:"fixed"}}>
-      <BottomBar/>
+      <BottomBar title={title} />
 
       </Box>
       

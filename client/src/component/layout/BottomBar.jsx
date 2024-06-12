@@ -42,19 +42,7 @@ const BottomBar = ({ title }) => {
   };
 
   return (
-    // <Box
-    //   width={"20%"}
-    //   className="bottomMenu"
-    //   bgcolor={"var(--blue)"}
-    //   sx={{
-    //     display: "flex",
-    //     alignItems: "center",
-    //     position: "sticky",
-    //     top: 0,
-    //     left: 0,
-    //     height: "100vh",
-    //   }}
-    // >
+    
     <Box
       className="bottomMenu"
       sx={{
@@ -72,8 +60,9 @@ const BottomBar = ({ title }) => {
           <Box
             key={i}
             sx={{
-              bgcolor: title === item.name ? "white" : "inherit",
+            
               color: title === item.name ? "blue" : "white",
+      
               fontWeight: "bold",
               borderTopRightRadius: "10px",
               borderBottomRightRadius: "10px",
@@ -96,7 +85,7 @@ const BottomBar = ({ title }) => {
         );
       })}
     </Box>
-    // </Box>
+ 
   );
 };
 

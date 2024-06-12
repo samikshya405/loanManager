@@ -25,6 +25,13 @@
 .bottomMenu{
   display: none !important;
 }
+.alert{
+  color: red;
+  padding: 10px;
+  font-size: 10px;
+  display: none;
+
+}
 @media screen and (max-width: 768px) {
   .sidemenu{
     display: none !important;
@@ -34,5 +41,8 @@
   }
   .bottomMenu{
     display: flex !important;
+  }
+  .alert{
+    display: block;
   }
 }

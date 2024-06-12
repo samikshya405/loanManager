@@ -8,12 +8,13 @@ import Given from './pages/given/Given'
 import Paid from './pages/paid/Paid'
 import People from './pages/people/People'
 import Profile from './component/table/Profile'
+import ScrollToTop from './component/scroll/ScrollToTop'
 
 const App = () => {
   return (
     <div>
 
-      
+      <ScrollToTop/>
       <Routes>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<SignUp/>}/>

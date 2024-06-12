@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MainLayout from "../../component/layout/MainLayout";
 import { Box, Grid, Typography } from "@mui/material";
 import { FaHandHoldingDollar } from "react-icons/fa6";
@@ -9,9 +9,27 @@ import LineChart from "../../component/chart/LineChart";
 // import LineChart from "../../component/chart/LineChart";
 
 const Dashboard = () => {
+  const [showAlert, setShowAlert] = useState(true);
+
+    useEffect(() => {
+        // Set a timer to hide the alert after 5 seconds (5000 milliseconds)
+        const timer = setTimeout(() => {
+            setShowAlert(false);
+        }, 3000);
+
+        // Cleanup the timer if the component unmounts before the timer completes
+        return () => clearTimeout(timer);
+    }, []);
+  
   return (
     <MainLayout title="Dashboard">
+      
       <Box width={"100%"} pt={4} px={2}>
+      {showAlert && (
+                <p className="alert">
+                    Use tab or desktop for better experience
+                </p>
+            )}
         <Grid container spacing={1}>
           <Grid item xs={12} sm={6} md={6} lg={3}>
             <Box

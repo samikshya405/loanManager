@@ -42,7 +42,6 @@ const BottomBar = ({ title }) => {
   };
 
   return (
-    
     <Box
       className="bottomMenu"
       sx={{
@@ -60,9 +59,8 @@ const BottomBar = ({ title }) => {
           <Box
             key={i}
             sx={{
-            
               color: title === item.name ? "blue" : "white",
-      
+
               fontWeight: "bold",
               borderTopRightRadius: "10px",
               borderBottomRightRadius: "10px",
@@ -77,15 +75,21 @@ const BottomBar = ({ title }) => {
             }}
             onClick={() => hanldeClick(item.link)}
           >
-            <Box sx={{display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center"}}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
               <item.icon style={{ fontSize: "25px" }} />
-              <span style={{fontSize:"8px"}}>{item.name}</span>
+              <span style={{ fontSize: "8px" }}>{item.name}</span>
             </Box>
           </Box>
         );
       })}
     </Box>
- 
   );
 };
 

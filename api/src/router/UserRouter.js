@@ -2,6 +2,7 @@ import express from 'express'
 import { findEmail, insertUser } from '../model/user/userModel.js';
 import { compairPassword, hasPassword } from '../utilis/bcryptjs.js';
 import { signAccessToken, signRefreshJWT } from '../utilis/jwt.js';
+import { auth } from '../middleware/auth.js';
 
 
 const router = express.Router()
@@ -82,5 +83,18 @@ router.post("/login", async (req, res) => {
       });
     }
 })
+router.get("/", auth, async (req, res) => {
+    try {
+      req.userInfo.refreshJWT = undefined;
+      req.userInfo._v = undefined;
+      res.json({
+        status: "success",
+        message: "todo GET",
+        user: req.userInfo,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
 export default router

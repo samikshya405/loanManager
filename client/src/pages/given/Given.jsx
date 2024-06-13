@@ -74,7 +74,14 @@ const inputs = [
 ];
 const initialState = {
   name: "",
-  loanAmount: "",
+  principalAmount:"",
+  date:"",
+  interestType:"",
+  tranferType:"",
+  rate:"",
+  maturityDate:""
+
+  
 };
 
 const Given = () => {

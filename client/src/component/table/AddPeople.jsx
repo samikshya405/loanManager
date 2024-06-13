@@ -5,6 +5,9 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { CustomInput } from "../auth/CustomInput";
 import { InputLabel } from "@mui/material";
+import CloseIcon from '@mui/icons-material/Close';
+
+import { useState } from "react";
 
 const style = {
   position: "absolute",
@@ -45,12 +48,30 @@ const inputs = [
     required: false,
   },
 ];
+const initialState ={
+  fName:"",
+  lName:"",
+  address:"",
+  citizenship:""
+
+
+}
 
 export default function AddPeople() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const handleChange = (e) => {};
+
+  const [formData, setFormData] = useState(initialState)
+  const handleChange = (e) => {
+    const {name, value} = e.target
+    setFormData({...formData, [name]:value})
+  };
+const handleSubmit=(e)=>{
+  e.preventDefault()
+  console.log(formData);
+  setOpen(false)
+}
 
   return (
     <div>
@@ -64,20 +85,22 @@ export default function AddPeople() {
       </Button>
       <Modal
         open={open}
-        onClose={handleClose}
+        
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} component={"form"}>
+        
+        <Box sx={style} component={"form"} onSubmit={handleSubmit}>
+        <Typography textAlign={"end"} ><CloseIcon sx={{cursor:"pointer"}} onClick={handleClose}/></Typography>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Add People
           </Typography>
           {inputs.map(({ label, ...input }, i) => {
             return (
-              <>
+              <Box key={i}>
                 <InputLabel>{label}</InputLabel>
-                <CustomInput key={i} input={input} onChange={handleChange} />
-              </>
+                <CustomInput key={i} {...input} onChange={handleChange} />
+              </Box>
             );
           })}
           <Box sx={{ textAlign: "end", p: 2 }}>
@@ -85,7 +108,7 @@ export default function AddPeople() {
               variant="contained"
               sx={{ px: 3 }}
               style={{ background: "var(--blue)" }}
-              onClick={handleClose}
+              type="submit"
             >
               Submit
             </Button>

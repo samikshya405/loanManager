@@ -7,6 +7,8 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { FaCoins } from "react-icons/fa";
 import HomeIcon from "@mui/icons-material/Home";
 import PeopleIcon from "@mui/icons-material/People";
+import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
+import { logout } from "../../axios/axiosHelper";
 const navigation = [
   {
     name: "Dashboard",
@@ -40,7 +42,12 @@ const Sidebar = ({ title }) => {
   const hanldeClick = (link) => {
     navigate(link);
   };
-
+  const handleLogout = () => {
+    
+    logout();
+    navigate('/login');
+    
+  };
   return (
     <Box
       width={"20%"}
@@ -79,15 +86,35 @@ const Sidebar = ({ title }) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-               
+
                 gap: "10px",
               }}
               onClick={() => hanldeClick(item.link)}
             >
-              <item.icon style={{fontSize:"25px"}} /> <span className="menu">{item.name}</span>
+              <item.icon style={{ fontSize: "25px" }} />{" "}
+              <span className="menu">{item.name}</span>
             </Box>
           );
         })}
+        <Box
+          sx={{
+            py: 1,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontWeight: "bold",
+           
+            cursor: "pointer",
+            width: "80%",
+            gap: "10px",
+            color: "white",
+           
+         
+          }}
+          onClick={handleLogout}
+        >
+          <PowerSettingsNewIcon style={{ fontSize: "25px" }} /> Logout
+        </Box>
       </Box>
     </Box>
   );

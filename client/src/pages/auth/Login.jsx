@@ -8,17 +8,15 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-// import CustomInput from "../component/auth/CustomInput";
-// import loginBg from "../../assets/image/loginBg.png";
-// import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
+
 import { CustomInput, CustomSelect } from "../../component/auth/CustomInput";
-// import { fetchUserInfo, userLogin } from "../../utils/axiosHelper";
-// import { toast } from "react-toastify";
-import loan from '../../assets/image/loan.webp'
-import bg from '../../assets/image/trans.png'
+
+import loan from "../../assets/image/loan.webp";
+import bg from "../../assets/image/trans.png";
 import { useNavigate } from "react-router-dom";
+import { fetchUserInfo, userLogin } from "../../axios/axiosHelper";
+import { toast } from "react-toastify";
 const inputs = [
- 
   {
     name: "email",
     label: "Email",
@@ -51,15 +49,39 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const loginPromise = userLogin(formData);
+    toast.promise(loginPromise, {
+      pending: "In Progress...",
+    });
+    const result = await loginPromise;
+    console.log(result);
+    if (result.status === "success") {
+      navigate("/");
+    }
+    const { status, tokens } = result;
+    status === "success" ? navigate("/") : setIsInvalid(true);
+    if (status === "success") {
+      sessionStorage.setItem("accessJWT", tokens.accessJWT);
+      localStorage.setItem("refreshJWT", tokens.refreshJWT);
+    }
+    const user = await fetchUserInfo();
+    console.log("user", user);
   };
 
   return (
     <Box padding={3}>
-      
       <Grid container height="100vh" alignItems="center" spacing={5}>
-        <Grid item sx={{display:"flex", justifyContent:"center", alignItems:"center"}} md={5} lg={6}>
-          <img src={bg} alt="hospital image"  />
+        <Grid
+          item
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          md={5}
+          lg={6}
+        >
+          <img src={bg} alt="hospital image" />
         </Grid>
         <Grid item xs={12} sm={12} md={7} lg={6}>
           <Typography align="center" component="h1" variant="h5">

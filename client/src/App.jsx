@@ -9,6 +9,7 @@ import Paid from './pages/paid/Paid'
 import People from './pages/people/People'
 import Profile from './component/table/Profile'
 import ScrollToTop from './component/scroll/ScrollToTop'
+import PrivateRoute from './private/PrivateRoute'
 
 const App = () => {
   return (
@@ -18,12 +19,12 @@ const App = () => {
       <Routes>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<SignUp/>}/>
-        <Route path='/' element={<Dashboard/>}/>
-        <Route path='/recieved' element={<Recieved/>}/>
-        <Route path='/given' element={<Given/>}/>
-        <Route path='/paid' element={<Paid/>}/>
-        <Route path='/people' element={<People/>}/>
-        <Route path='/profile' element={<Profile/>}/>
+        <Route path='/' element={<PrivateRoute element={<Dashboard />} />} />
+        <Route path='/recieved' element={<PrivateRoute element={<Recieved />} />} />
+        <Route path='/given' element={<PrivateRoute element={<Given />} />} />
+        <Route path='/paid' element={<PrivateRoute element={<Paid />} />} />
+        <Route path='/people' element={<PrivateRoute element={<People />} />} />
+        <Route path='/profile' element={<PrivateRoute element={<Profile />} />} />
       </Routes>
     </div>
   )

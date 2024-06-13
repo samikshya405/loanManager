@@ -3,14 +3,15 @@ import bg from "../../assets/image/trans.png";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { CustomInput, CustomSelect } from "../../component/auth/CustomInput";
 import { Link, useNavigate } from "react-router-dom";
+import { postNewUser } from "../../axios/axiosHelper";
+import { toast } from "react-toastify";
 const inputs = [
-    {
-        name: "name",
-        label: "Name",
-        id: "name",
-        type: "text",
-        
-      },
+  {
+    name: "name",
+    label: "Name",
+    id: "name",
+    type: "text",
+  },
   {
     name: "email",
     label: "Email",
@@ -23,34 +24,68 @@ const inputs = [
     id: "password",
     type: "password",
   },
+  {
+    name: "confirmPassword",
+    label: "Confirm Password",
+    id: "confirmPassword",
+    type: "password",
+  },
 ];
 const initialState = {
-  department: "",
+  name: "",
   email: "",
   password: "",
+  confirmPassword: "",
 };
 const SignUp = () => {
-    const [formData, setformData] = useState(initialState);
+  const [formData, setformData] = useState(initialState);
   const navigate = useNavigate();
-//   const [isInValid, setIsInvalid] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // setIsInvalid(false);
 
     setformData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const { confirmPassword, ...rest } = formData;
+    if (confirmPassword !== rest.password) {
+      return alert("password didnot match");
+    }
+    const signInPromise = postNewUser(rest);
+    toast.promise(signInPromise, {
+      pending: "In Progress...",
+    });
 
+    const data = await signInPromise;
+
+    console.log(data);
+
+    if (data.status === "success") {
+      toast.success("Your account has been created", {
+        hideProgressBar: true,
+        position: "top-center",
+      });
+      setformData(initialState);
+    }
+    if(data.status ==='error'){
+      toast.error(data.message , {
+        hideProgressBar: true,
+        position: "top-center",
+      });
+    }
   };
   return (
     <Box padding={3}>
       <Grid container height="100vh" alignItems="center" spacing={5}>
         <Grid
           item
-          sx={{ display: "flex", justifyContent: "center" , alignItems:"center"}}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
           md={5}
           lg={6}
         >
@@ -62,16 +97,15 @@ const SignUp = () => {
           </Typography>
 
           <Box component="form" sx={{ mt: 1 }} onSubmit={handleSubmit}>
-            {/* {isInValid && (
-              <Typography p={1} color={"red"}>
-                Invalid login Credentials !
-              </Typography>
-            )} */}
             {inputs.map((input, index) => {
               return (
                 <div key={index}>
                   {input.type !== "select" ? (
-                    <CustomInput {...input} onChange={handleChange} />
+                    <CustomInput
+                      {...input}
+                      value={formData[input.name]}
+                      onChange={handleChange}
+                    />
                   ) : (
                     <CustomSelect
                       input={input}
@@ -90,7 +124,7 @@ const SignUp = () => {
               sx={{ mt: 3, mb: 2 }}
               style={{ background: "var(--primary)" }}
             >
-             Create Account
+              Create Account
             </Button>
             <Typography align="center">
               <Link href="/login" variant="body2" align="center">

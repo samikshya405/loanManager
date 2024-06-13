@@ -32,7 +32,7 @@ const inputs = [
   },
 
   {
-    name: "tranferType",
+    name: "transferType",
     label: "Tranfer Type",
     id: "transferType",
     type: "select",
@@ -48,7 +48,10 @@ const inputs = [
 ];
 const initialState = {
   name: "",
-  loanAmount: "",
+  paidAmount: "",
+  date:"",
+  transferType:"",
+  bankName:""
 };
 
 const Paid = () => {
@@ -100,6 +103,18 @@ const Paid = () => {
                 </Grid>
               );
             })}
+            {formData.transferType === "Bank" && (
+              <Grid item xs={12} md={6}>
+                <InputLabel sx={{ p: 1 }}>Bank Name *</InputLabel>
+                <CustomInput
+                  name="bankName"
+                  required
+                  type="text"
+                  value={formData.bankName}
+                  onChange={handleChange}
+                />
+              </Grid>
+            )}
           </Grid>
           <Box sx={{ textAlign: "end", p: 3 }}>
             <Button variant="contained" style={{ background: "var(--blue)" }}>

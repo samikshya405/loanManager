@@ -8,6 +8,8 @@ import { InputLabel } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 
 import { useState } from "react";
+import { postNewCustomer } from "../../axios/axiosHelper";
+import { useSelector } from "react-redux";
 
 const style = {
   position: "absolute",
@@ -63,13 +65,20 @@ export default function AddPeople() {
   const handleClose = () => setOpen(false);
 
   const [formData, setFormData] = useState(initialState)
+  const {_id} = useSelector(state=>state.auth.userCredentials)
   const handleChange = (e) => {
     const {name, value} = e.target
     setFormData({...formData, [name]:value})
   };
-const handleSubmit=(e)=>{
+const handleSubmit = async(e)=>{
   e.preventDefault()
+  
+  const result = await postNewCustomer(_id, formData)
+
+  console.log(result);
+  console.log(_id);
   console.log(formData);
+
   setOpen(false)
 }
 

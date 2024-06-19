@@ -16,6 +16,8 @@ import bg from "../../assets/image/trans.png";
 import { useNavigate } from "react-router-dom";
 import { fetchUserInfo, userLogin } from "../../axios/axiosHelper";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../redux/auth/authSlice";
 const inputs = [
   {
     name: "email",
@@ -39,6 +41,7 @@ const Login = () => {
   const [formData, setformData] = useState(initialState);
   const navigate = useNavigate();
   const [isInValid, setIsInvalid] = useState(false);
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -65,6 +68,7 @@ const Login = () => {
       localStorage.setItem("refreshJWT", tokens.refreshJWT);
     }
     const user = await fetchUserInfo();
+    dispatch(addUser(user));
     console.log("user", user);
   };
 

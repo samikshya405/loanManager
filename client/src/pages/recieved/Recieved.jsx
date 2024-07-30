@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import MainLayout from "../../component/layout/MainLayout";
 import { Box, Button, Grid, InputLabel, Typography } from "@mui/material";
 import { CustomInput, CustomSelect } from "../../component/auth/CustomInput";
+import { getAllMember } from "../../axios/axiosHelper";
+import { useSelector } from "react-redux";
 
-const inputdata = [
+const data = [
   {
     name: "transactionType",
     label: "Transaction Type",
@@ -74,6 +76,21 @@ const initialState = {
 
 const Received = () => {
   const [formData, setFormData] = useState(initialState);
+  const [inputdata, setInputData] = useState(data);
+  const {_id} = useSelector(state=>state.auth.userCredentials)
+
+  const getMember = async () => {
+    try {
+      const result = await getAllMember(_id)
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getMember()
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -82,7 +99,7 @@ const Received = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     console.log(formData); // For testing purposes
     // Implement your form submission logic here
   };

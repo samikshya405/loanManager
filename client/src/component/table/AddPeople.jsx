@@ -72,6 +72,7 @@ export default function AddPeople() {
   };
 const handleSubmit = async(e)=>{
   e.preventDefault()
+  console.log(_id);
   
   const result = await postNewCustomer(_id, formData)
 

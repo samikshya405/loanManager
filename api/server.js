@@ -5,6 +5,7 @@ import cors from 'cors'
 import morgan from 'morgan'
 
 import UserRouter from './src/router/UserRouter.js'
+import CustomerRouter from './src/router/CustomerRouter.js'
 
 const app = express();
 
@@ -18,6 +19,8 @@ if (process.env.NODE_ENV !== "production") {
 app.use(express.json());
 
 app.use('/api/v1/users', UserRouter )
+
+app.use('/api/v1/customers', CustomerRouter )
 
 
 app.listen(PORT, (error) => {

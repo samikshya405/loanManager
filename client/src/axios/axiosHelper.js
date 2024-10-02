@@ -47,6 +47,7 @@ const getAccessJWT = () => {
 
 export const postNewCustomer = async (userId, customerInfo) => {
   try {
+    console.log(userId);
     const response = await axios.post(customerEp, customerInfo, {
       headers: {
         Authorization: userId,
@@ -65,3 +66,18 @@ export const logout = () => {
   sessionStorage.removeItem("accessJWT");
   localStorage.removeItem("refreshJWT");
 };
+
+
+export const getAllMember =async(userId)=>{
+  try {
+    const response = await axios.get(customerEp ,{
+      headers:{
+        Authorization:userId
+      }
+    } )
+  } catch (error) {
+    console.log(error);
+    
+  }
+
+}

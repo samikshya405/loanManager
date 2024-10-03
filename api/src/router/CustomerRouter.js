@@ -1,4 +1,4 @@
-import express from "express";
+import express, { request } from "express";
 import { findUser, postNewCustomer } from "../model/customer/CustomerModel.js";
 
 const router = express.Router();
@@ -28,6 +28,20 @@ router.post("/", async (req, res) => {
           status: "error",
           message: "failed to add new user try again",
         });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.get("/:_id", async (req, res) => {
+  try {
+    const _id = req.params();
+    console.log(_id, 'this is ID');
+    res.json({
+      status: "success",
+      message: "todo GET",
+      user: req.userInfo,
+    });
   } catch (error) {
     console.log(error);
   }
